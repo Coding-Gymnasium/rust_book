@@ -94,10 +94,26 @@ fn main() {
     // variables r1 and r2 will not be used after this point
 
     let r7 = &mut s3; //now it's possible, since the scopes no longer overlap.
-    println!("{} r7", r7)
+    println!("{} r7", r7);
+
+    // ----- Dangling References
+    // let reference_to_nothing = dangle(); // errors out because dangle()'s return type contains a borrowed value, but there is no value for it to be borrowed from
+    let reference_to_no_dangle = no_dangle();
+    println!("{}", reference_to_no_dangle)
 }
 
 //------- other functions
+/*
+fn dangle() -> &String { // dangle returns a reference to a String
+    let s = String::from("hello"); // s is a new String
+    &s // we return a reference to the String, s
+} // Here, s goes out of scope, and is dropped. Its memory goes away. Danger!
+*/
+
+fn no_dangle() -> String {
+    let s = String::from("hello, no dangle");
+    s
+}
 
 fn change(some_string: &mut String) {
     some_string.push_str(", world");
