@@ -46,7 +46,7 @@
 
 //----------- References and Borrowing ------------- //
 //--------------------------------------------------//
-
+/*
 fn main() {
     println!("*--- References and Borrowing ---*");
     println!("*--------------------------------*");
@@ -120,5 +120,30 @@ fn change(some_string: &mut String) {
 }
 
 fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+*/
+
+fn main() {
+    //----------- The Slice Type -----------------//
+    //-- this code below is error prone.
+    let mut s = String::from("hello world");
+    let _word = first_word(&s); // word will get the value 5
+    
+    s.clear(); // this empties the String, amking it equal to ""
+
+    //word still has the value 5 here, but there's not more string that we could meaningfully use
+    //the value 5 with. word is now totally invalid!
+
+}
+
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
     s.len()
 }

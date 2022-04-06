@@ -12,7 +12,13 @@ Rust Book
     [x] - Stack-Only Data: Copy
     [x] - Ownership and Functions
     [x] - Return Values and Scope
-  [ ] References and Borrowing
+  [x] References and Borrowing
     [x] References
     [x] Mutable References
     [x] Dangling References
+  [ ] The Slice Type
+    [x] Slices
+    [ ] String Slices
+    [ ] String Literals Are Slices
+    [ ] String Slices as Parameters
+    [ ] Other Slices
